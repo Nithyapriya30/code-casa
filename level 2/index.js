@@ -1,13 +1,14 @@
-setInterval(() => {
-	d = new Date(); //object of date()
-	hr = d.getHours();
-	min = d.getMinutes();
-	sec = d.getSeconds();
-	hr_rotation = 30 * hr + min / 2; //converting current time
-	min_rotation = 6 * min;
-	sec_rotation = 6 * sec;
+const celsius = document.querySelector("#celsius"),
+    fahrenheit = document.querySelector("#fahrenheit");
 
-	hour.style.transform = `rotate(${hr_rotation}deg)`;
-	minute.style.transform = `rotate(${min_rotation}deg)`;
-	second.style.transform = `rotate(${sec_rotation}deg)`;
-}, 1000);
+window.addEventListener("load", () => celsius.focus());
+
+celsius.addEventListener("input", () => {
+    fahrenheit.value = ((celsius.value * 9) / 5 + 32).toFixed(2)
+    if(!celsius.value) fahrenheit.value = "";
+})
+
+fahrenheit.addEventListener("input", () => {
+    celsius.value = ((fahrenheit.value - 32) * 5 / 9).toFixed(2)
+    if(!fahrenheit.value) celsius.value = "";
+})
